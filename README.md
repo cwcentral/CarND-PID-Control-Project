@@ -1,16 +1,36 @@
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
 
+
 ---
 
-In tuning the PID controller, I started with the Proportional gain, tuning to a value that keeps the car on a straight section of road, the bridge area. I started with Kp = 0.01 and increased the value until the car started oscillating constantly, but where the oscillating did not increase/amplify. The final Kp was 0.1. Then I increased Kd to smooth out the oscillations, and ended up with Kd = 1.0. Then to handled the very sharp turns, I increased Kp and Kd together and ended up with Kp = 0.21 and Kd = 2.1 for crisp control that is not over damped.
+## Summary
+In this project we revisit the lake race track from the Behavioral Cloning Project. This time, however, a PID controller in C++ to maneuver the vehicle around the track is used.
+
+The simulator will provide you the cross track error (CTE) and the velocity (mph) in order to compute the appropriate steering angle.
+
+## Tuning
+
+In tuning the PID controller, I started with the Proportional gain, tuning to a value that keeps the car on a straight section of road, the bridge area. 
+
+I started with Kp = 0.01 and increased the value until the car started oscillating constantly, but where the oscillating did not increase/amplify. The final Kp was 0.1. 
+
+Then I increased Kd to smooth out the oscillations, and ended up with Kd = 1.0. 
+
+Then to handled the very sharp turns, I increased Kp and Kd together and ended up with Kp = 0.21 and Kd = 2.1 for crisp control that is not over damped.
 
 I did not need to alter Ki as there was no inherent cross track drift and no information about tire slip and assumed the road was flat. Hence Ki = 0.
 
+## Reflection
 
+Kp, Ki, Kd changes appropriately behaved as described in the lesson material. Increasing Kp created overshoots in steering. Inceasing Kd dampened those overshoots and increasing Ki forced a offset from the center line of the road.                   [This was described here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/f1820894-8322-4bb3-81aa-b26b3c6dcbaf/lessons/1397890f-71c5-4d83-aae7-0a031eedd1f2/concepts/db31b93d-6741-4e5c-b63c-fa6dd5c170ff#)
 
+Having a Kp of 0.21 and Kd of 2.1, the car stayed in the middle of the lane as shown in this video
+[![Output](output/run.png)](https://youtu.be/4u69CFZbF5c "Click to Play Video")
 
+Looking at the graph of cte vs steering input, I was able to simply increase the PID gains and keep the car in the road. Other tuning aids were not needed (Twiddle, opt, etc.) since we assumed the road was flat, no slip/drag issues and zero latency on steering input.
 
+<img src="output/graph.png" width="320" alt="Combined Image" />
 
 
 ## Dependencies 
