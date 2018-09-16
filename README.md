@@ -23,17 +23,17 @@ I did not need to alter Ki as there was no inherent cross track drift and no inf
 
 ## Reflection
 
-Kp, Ki, Kd changes appropriately behaved as described in the lesson material. Increasing Kp created overshoots in steering. Inceasing Kd dampened those overshoots and increasing Ki forced a offset from the center line of the road.                   This was described here (credit: Udacity):
+Kp, Ki, Kd changes appropriately behaved as described in the lesson material. Increasing Kp created overshoots in steering. Increasing Kd dampened those overshoots and increasing Ki forced a offset from the center line of the road.                   This was described here (credit: Udacity):
 
 <img src="output/desc.png" width="480" alt="Combined Image" />
 
 
-For example, increasing Kp to 1.0 causesd the car to violently steering and overshoot (bang-bang) and eventually off the road. Increasing Ki (1.0) would cause the car to overshoot immediately. Increasing Kd (10.0) to a point there was diminishing returns where drifting off center occured.
+For example, increasing Kp to 1.0 caused the car to violently steering and overshoot and eventually off the road. Increasing Ki (1.0) would cause the car to overshoot immediately. Increasing Kd (10.0) to a point there was diminishing returns where drifting "off center" occured.
 
-Having a Kp of 0.21 and Kd of 2.1, the car stayed in the middle of the lane as shown in this video
+Having a **Kp of 0.21, Ki = 0 and Kd of 2.1**, the car stayed in the middle of the lane as shown in this video
 [![Output](output/run.png)](https://youtu.be/4u69CFZbF5c "Click to Play Video")
 
-Looking at the graph of cte vs steering input, I was able to simply increase the PID gains and keep the car in the road. Other tuning aids were not needed (Twiddle, opt, etc.) since we assumed the road was flat, no slip/drag issues and zero latency on steering input.
+Looking at the graph of *cte vs steering input*, I was able to simply increase the PID gains and keep the car in the road. Other tuning aids were not needed (Twiddle, opt, etc.) since we assumed the road was flat, no slip/drag issues and zero latency on steering input.
 
 <img src="output/graph.png" width="640" alt="Combined Image" />
 
