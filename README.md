@@ -33,7 +33,7 @@ For example, increasing Kp to 1.0 caused the car to violently steering and overs
 Having a **Kp of 0.21, Ki = 0 and Kd of 2.1**, the car stayed in the middle of the lane as shown in this video
 [![Output](output/run.png)](https://youtu.be/4u69CFZbF5c "Click to Play Video")
 
-Looking at the graph of *cte vs steering input*, I was able to simply increase the PID gains and keep the car in the road. Other tuning aids were not needed (Twiddle, opt, etc.) since we assumed the road was flat, no slip/drag issues and zero latency on steering input.
+Looking at the graph of *cte vs steering input*, I was able to simply increase the PID gains and keep the car in the road. Other tuning aids were not needed (Twiddle, opt, etc.) since we assumed the road was flat, no slip/drag issues and zero latency on steering input. I adjusted the PID gains to visually minimze the steering input vs the CTE.
 
 <img src="output/graph.png" width="640" alt="Combined Image" />
 
