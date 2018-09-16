@@ -23,14 +23,16 @@ I did not need to alter Ki as there was no inherent cross track drift and no inf
 
 ## Reflection
 
-Kp, Ki, Kd changes appropriately behaved as described in the lesson material. Increasing Kp created overshoots in steering. Inceasing Kd dampened those overshoots and increasing Ki forced a offset from the center line of the road.                   [This was described here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/f1820894-8322-4bb3-81aa-b26b3c6dcbaf/lessons/1397890f-71c5-4d83-aae7-0a031eedd1f2/concepts/db31b93d-6741-4e5c-b63c-fa6dd5c170ff#)
+Kp, Ki, Kd changes appropriately behaved as described in the lesson material. Increasing Kp created overshoots in steering. Inceasing Kd dampened those overshoots and increasing Ki forced a offset from the center line of the road.                   This was described here (credit: Udacity):
+<img src="output/desc.png" width="480" alt="Combined Image" />
+
 
 Having a Kp of 0.21 and Kd of 2.1, the car stayed in the middle of the lane as shown in this video
 [![Output](output/run.png)](https://youtu.be/4u69CFZbF5c "Click to Play Video")
 
 Looking at the graph of cte vs steering input, I was able to simply increase the PID gains and keep the car in the road. Other tuning aids were not needed (Twiddle, opt, etc.) since we assumed the road was flat, no slip/drag issues and zero latency on steering input.
 
-<img src="output/graph.png" width="320" alt="Combined Image" />
+<img src="output/graph.png" width="480" alt="Combined Image" />
 
 
 ## Dependencies 
