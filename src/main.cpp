@@ -3,6 +3,11 @@
 #include "json.hpp"
 #include "PID.h"
 #include <math.h>
+#include <iostream>
+#include <fstream>
+
+// graphing
+std::ofstream dataFile;
 
 // for convenience
 using json = nlohmann::json;
@@ -28,12 +33,25 @@ std::string hasData(std::string s) {
   return "";
 }
 
+double constrain(double in, double min, double max)
+{
+    if (in > max)
+       in = max;
+    if (in < min)
+       in = min;
+
+    return in;
+}
+
 int main()
 {
   uWS::Hub h;
 
+  dataFile.open ("cte.dat");
+
   PID pid;
   // TODO: Initialize the pid variable.
+  pid.Init(0.21, 0.0, 2.1);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
@@ -50,16 +68,19 @@ int main()
           double cte = std::stod(j[1]["cte"].get<std::string>());
           double speed = std::stod(j[1]["speed"].get<std::string>());
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
-          double steer_value;
+          double steer_value = 0.;
           /*
           * TODO: Calcuate steering value here, remember the steering value is
           * [-1, 1].
           * NOTE: Feel free to play around with the throttle and speed. Maybe use
           * another PID controller to control the speed!
           */
-          
+          pid.UpdateError(cte);
+          steer_value = constrain((-1 * pid.TotalError()), -1.0, 1.0);
+
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
+          dataFile << cte << "," << steer_value << "\n";
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
@@ -97,6 +118,9 @@ int main()
 
   h.onDisconnection([&h](uWS::WebSocket<uWS::SERVER> ws, int code, char *message, size_t length) {
     ws.close();
+
+    dataFile.close();
+
     std::cout << "Disconnected" << std::endl;
   });
 
@@ -111,4 +135,6 @@ int main()
     return -1;
   }
   h.run();
+
+  dataFile.close();
 }

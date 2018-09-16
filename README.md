@@ -3,7 +3,17 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
-## Dependencies
+In tuning the PID controller, I started with the Proportional gain, tuning to a value that keeps the car on a straight section of road, the bridge area. I started with Kp = 0.01 and increased the value until the car started oscillating constantly, but where the oscillating did not increase/amplify. The final Kp was 0.1. Then I increased Kd to smooth out the oscillations, and ended up with Kd = 1.0. Then to handled the very sharp turns, I increased Kp and Kd together and ended up with Kp = 0.21 and Kd = 2.1 for crisp control that is not over damped.
+
+I did not need to alter Ki as there was no inherent cross track drift and no information about tire slip and assumed the road was flat. Hence Ki = 0.
+
+
+
+
+
+
+
+## Dependencies 
 
 * cmake >= 3.5
  * All OSes: [click here for installation instructions](https://cmake.org/install/)
