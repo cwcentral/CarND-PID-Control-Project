@@ -11,7 +11,7 @@ The simulator will provide you the cross track error (CTE) and the velocity (mph
 
 ## Tuning
 
-In tuning the PID controller, I started with the Proportional gain, tuning to a value that keeps the car on a straight section of road, the bridge area. 
+In tuning the PID controller, I started with the Proportional gain, tuning to a value that keeps the car on a straight section of road, the bridge area. Basically see if bang-bang only control can keep the car on the road.
 
 I started with Kp = 0.01 and increased the value until the car started oscillating constantly, but where the oscillating did not increase/amplify. The final Kp was 0.1. 
 
@@ -27,6 +27,8 @@ Kp, Ki, Kd changes appropriately behaved as described in the lesson material. In
 
 <img src="output/desc.png" width="480" alt="Combined Image" />
 
+
+For example, increasing Kp to 1.0 causesd the car to violently steering and overshoot (bang-bang) and eventually off the road. Increasing Ki (1.0) would cause the car to overshoot immediately. Increasing Kd (10.0) to a point there was diminishing returns where drifting off center occured.
 
 Having a Kp of 0.21 and Kd of 2.1, the car stayed in the middle of the lane as shown in this video
 [![Output](output/run.png)](https://youtu.be/4u69CFZbF5c "Click to Play Video")
