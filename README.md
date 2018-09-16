@@ -33,7 +33,7 @@ Having a Kp of 0.21 and Kd of 2.1, the car stayed in the middle of the lane as s
 
 Looking at the graph of cte vs steering input, I was able to simply increase the PID gains and keep the car in the road. Other tuning aids were not needed (Twiddle, opt, etc.) since we assumed the road was flat, no slip/drag issues and zero latency on steering input.
 
-<img src="output/graph.png" width="480" alt="Combined Image" />
+<img src="output/graph.png" width="640" alt="Combined Image" />
 
 
 ## Dependencies 
