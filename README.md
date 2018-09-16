@@ -24,6 +24,7 @@ I did not need to alter Ki as there was no inherent cross track drift and no inf
 ## Reflection
 
 Kp, Ki, Kd changes appropriately behaved as described in the lesson material. Increasing Kp created overshoots in steering. Inceasing Kd dampened those overshoots and increasing Ki forced a offset from the center line of the road.                   This was described here (credit: Udacity):
+
 <img src="output/desc.png" width="480" alt="Combined Image" />
 
 
